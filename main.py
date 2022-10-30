@@ -1,82 +1,29 @@
-import matplotlib.pyplot as plt
+import Gauss_Method
+import Ortho_Method
+import Some_func
 
 
-def f(x):
-    return (x + 1.6) / (x ** 2 + x + 3.2)
+def main():
+    choice = input("Please choose the method you want to use: \n"
+                   "1. Gauss Method\n"
+                   "2. Orthogonal Method\n"
+                   "3. Some_func\n"
+                   "4. Exit\n"
+                   "Your choice: ")
+    if choice == "1":
+        Gauss_Method.Gauss_Method()
+        main()
+    elif choice == "2":
+        Ortho_Method.Ortho_Method()
+        main()
+    elif choice == "3":
+        Some_func.Some_func()
+        main()
+    elif choice == "4":
+        exit()
+    else:
+        print("Invalid choice")
+        main()
 
 
-X = []
-N = [4, 6, 8]
-
-for nn in range(3):
-    if (nn == 0):
-        n = 4
-        b = 4.8
-        a = 0.8
-
-        ansX = 1.34064
-
-        h = (b - a) / n
-        x = []
-        for i in range(1,n):
-            x.append(a + i * h)
-
-        fx = []
-        fa = f(a)
-        fx.append(fa)
-        for i in range(n-1):
-            fx.append(f(x[i]))
-        fb = f(b)
-        fx.append(fb)
-
-        Itrap = (h / 2) * (fa + fb + 2 * (sum(fx[1:n])))
-        X.append(Itrap)
-
-    if (nn == 1):
-        n = 6
-        b = 4.8
-        a = 0.8
-
-        ansX = 1.34064
-
-        h = (b - a) / n
-        x = []
-        for i in range(1, n):
-            x.append(a + i * h)
-
-        fx = []
-        fa = f(a)
-        fx.append(fa)
-        for i in range(n - 1):
-            fx.append(f(x[i]))
-        fb = f(b)
-        fx.append(fb)
-
-        Itrap = (h / 2) * (fa + fb + 2 * (sum(fx[1:n])))
-        X.append(Itrap)
-
-    if (nn == 2):
-        n = 8
-        b = 4.8
-        a = 0.8
-
-        ansX = 1.34064
-
-        h = (b - a) / n
-        x = []
-        for i in range(1, n):
-            x.append(a + i * h)
-
-        fx = []
-        fa = f(a)
-        fx.append(fa)
-        for i in range(n - 1):
-            fx.append(f(x[i]))
-        fb = f(b)
-        fx.append(fb)
-
-        Itrap = (h / 2) * (fa + fb + 2 * (sum(fx[1:n])))
-        X.append(Itrap)
-
-plt.plot(N, X)
-plt.show()
+main()
